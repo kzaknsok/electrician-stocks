@@ -1,0 +1,52 @@
+{
+  "5803.T": {
+    "code": "5803.T",
+    "edinetCode": "E00178",
+    "name": "フジクラ",
+    "cashAndEquivalents": 92400000000,
+    "securities": 15000000000,
+    "totalLiabilities": 280000000000,
+    "netAssets": 310000000000,
+    "updatedAt": "2026-08-28T04:31:38.830Z"
+  },
+  "5802.T": {
+    "code": "5802.T",
+    "edinetCode": "E00177",
+    "name": "住友電気工業",
+    "cashAndEquivalents": 254000000000,
+    "securities": 180000000000,
+    "totalLiabilities": 1850000000000,
+    "netAssets": 2100000000000,
+    "updatedAt": "2026-08-28T04:31:38.832Z"
+  },
+  "5801.T": {
+    "code": "5801.T",
+    "edinetCode": "E00176",
+    "name": "古河電気工業",
+    "cashAndEquivalents": 68000000000,
+    "securities": 42000000000,
+    "totalLiabilities": 620000000000,
+    "netAssets": 340000000000,
+    "updatedAt": "2026-08-28T04:31:38.832Z"
+  },
+  "5805.T": {
+    "code": "5805.T",
+    "edinetCode": "E00180",
+    "name": "SWCC",
+    "cashAndEquivalents": 18500000000,
+    "securities": 3500000000,
+    "totalLiabilities": 82000000000,
+    "netAssets": 78000000000,
+    "updatedAt": "2026-08-28T04:31:38.833Z"
+  },
+  "9824.T": {
+    "code": "9824.T",
+    "edinetCode": "E02693",
+    "name": "泉州電業",
+    "cashAndEquivalents": 31200000000,
+    "securities": 12800000000,
+    "totalLiabilities": 29000000000,
+    "netAssets": 76000000000,
+    "updatedAt": "2026-08-28T04:31:38.833Z"
+  }
+}

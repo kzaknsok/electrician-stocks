@@ -1,0 +1,19 @@
+# 依存パッケージ・開発環境関連
+node_modules/
+.npmrc
+
+# ローカル環境用キャッシュ・ログファイル
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# テスト・ビルド時の一時出力ファイル
+dist/
+tmp/
+.cache/
+
+# 環境変数・秘密情報（もし将来使う場合）
+.env
+.env.local

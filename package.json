@@ -1,0 +1,13 @@
+{
+  "name": "emin-valuation-app",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "fetch-data": "node scripts/fetch-financials.js",
+    "test-calc": "node scripts/test-calc.js"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "yahoo-finance2": "^4.0.2"
+  }
+}
