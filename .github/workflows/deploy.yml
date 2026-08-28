@@ -1,7 +1,7 @@
 name: Update Financials and Deploy to GitHub Pages
 
 on:
-  # 1. 定期自動実行（毎日 JST 午前0時 = UTC 15時）
+  # 1. 毎日 JST 午前0時（＝UTC 15時）に定期自動実行
   schedule:
     - cron: '0 15 * * *'
   
@@ -10,16 +10,15 @@ on:
     branches:
       - main
 
-  # 3. GitHub の Actions タブから手動で実行できるようにする
+  # 3. GitHub の Actions タブから手動実行できるようにする
   workflow_dispatch:
 
-# GitHub Pages へのデプロイに必要な権限設定
+# GitHub Pages へのデプロイに必要な権限
 permissions:
   contents: write
   pages: write
   id-token: write
 
-# 同時実行の制御（進行中のデプロイがある場合はキャンセル）
 concurrency:
   group: 'pages'
   cancel-in-progress: true
@@ -36,33 +35,33 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # --- Step 2: Python 環境のセットアップ ---
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      # --- Step 2: Node.js 環境のセットアップ ---
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.11'
+          node-version: '20'
+          cache: 'npm' # package-lock.json があればキャッシュして高速化
 
-      # --- Step 3: 依存ライブラリのインストール ---
-      # データ取得用の Python スクリプト等で使用するライブラリ（yfinance等）をインストール
+      # --- Step 3: 依存パッケージのインストール ---
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        run: npm ci || npm install
 
-      # --- Step 4: 財務データ取得スクリプトの実行 ---
-      # ※ データ更新用スクリプト（例: scripts/update_data.py）を実行して financials.json を更新
-      - name: Run data fetch script
+      # --- Step 4: データ更新スクリプトの実行 ---
+      # npm run update や node スクリプトなどプロジェクトの更新コマンドに合わせて実行します
+      - name: Run data update script
         run: |
-          if [ -f scripts/update_data.py ]; then
-            python scripts/update_data.py
+          if npm run | grep -q "update"; then
+            npm run update
+          elif [ -f scripts/update.js ]; then
+            node scripts/update.js
           fi
 
-      # --- Step 5: 更新された financials.json を Git コミット＆Push ---
-      - name: Commit & Push updated financials.json
+      # --- Step 5: 更新データのコミット & Push ---
+      - name: Commit & Push updated data
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add public/data/financials.json || git add data/financials.json || true
+          git add .
           if git diff --staged --quiet; then
             echo "No changes in financial data."
           else
@@ -74,13 +73,14 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # --- Step 7: 静的ファイル（Webサイト構成物）のアップロード ---
+      # --- Step 7: 静的ファイル（ビルド成果物）のアップロード ---
+      # Vite/React等のビルドを行う場合は npm run build 後に dist を指定します
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # リポジトリ全体を公開ルートとしてデプロイ
+          path: '.' # フレームワーク等で dist や build フォルダに出力される場合はそのパス（例: './dist'）を指定
 
-      # --- Step 8: GitHub Pages へのデプロイ実行 ---
+      # --- Step 8: デプロイ実行 ---
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
