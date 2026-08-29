@@ -8,7 +8,7 @@
     "totalLiabilities": 280000000000,
     "netAssets": 310000000000,
     "docId": null,
-    "updatedAt": "2026-08-28T23:57:07.959Z"
+    "updatedAt": "2026-08-29T18:14:17.167Z"
   },
   "5802.T": {
     "code": "5802.T",
@@ -19,7 +19,7 @@
     "totalLiabilities": 1850000000000,
     "netAssets": 2100000000000,
     "docId": null,
-    "updatedAt": "2026-08-28T23:57:07.959Z"
+    "updatedAt": "2026-08-29T18:14:17.167Z"
   },
   "5801.T": {
     "code": "5801.T",
@@ -30,7 +30,7 @@
     "totalLiabilities": 620000000000,
     "netAssets": 340000000000,
     "docId": null,
-    "updatedAt": "2026-08-28T23:57:07.959Z"
+    "updatedAt": "2026-08-29T18:14:17.167Z"
   },
   "5805.T": {
     "code": "5805.T",
@@ -41,7 +41,7 @@
     "totalLiabilities": 82000000000,
     "netAssets": 78000000000,
     "docId": null,
-    "updatedAt": "2026-08-28T23:57:07.959Z"
+    "updatedAt": "2026-08-29T18:14:17.167Z"
   },
   "9824.T": {
     "code": "9824.T",
@@ -52,6 +52,6 @@
     "totalLiabilities": 29000000000,
     "netAssets": 76000000000,
     "docId": null,
-    "updatedAt": "2026-08-28T23:57:07.959Z"
+    "updatedAt": "2026-08-29T18:14:17.167Z"
   }
 }
